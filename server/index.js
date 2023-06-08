@@ -1,8 +1,8 @@
 import express from "express";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
+import morgan from "morgan";
 import authRoutes from './routes/auth.js';
-import router from "./routes/auth.js";
 
 dotenv.config(); /*loads the variables from a .env file 
                     and sets them as environment variables in the current running process */
@@ -10,11 +10,15 @@ dotenv.config(); /*loads the variables from a .env file
 const app = express(); //excute express
 
 // db
-
 mongoose
     .connect(process.env.MONGO_URI)
     .then(() => console.log("DB connected"))
     .catch((err) => console.log("DB ERROR => ", err));
+
+// middlewares
+app.use(morgan("dev"));
+app.use(express.json()); // server passes the data via this middleware
+
 
 // router middleware
 app.use("/api", authRoutes);
