@@ -5,6 +5,7 @@ import morgan from "morgan";
 import authRoutes from "./routes/auth.js";
 import categoryRoutes from "./routes/category.js";
 import productRoutes from "./routes/product.js";
+import cors from "cors";
 
 dotenv.config(); /*loads the variables from a .env file 
                     and sets them as environment variables in the current running process */
@@ -22,6 +23,7 @@ app.use(morgan("dev"));
 app.use(express.json()); // server passes the data via this middleware
 
 // router middleware
+app.use(cors());
 app.use("/api", authRoutes);
 app.use("/api", categoryRoutes);
 app.use("/api", productRoutes);
