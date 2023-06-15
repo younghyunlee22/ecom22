@@ -4,6 +4,7 @@ import mongoose from "mongoose";
 import morgan from "morgan";
 import authRoutes from "./routes/auth.js";
 import categoryRoutes from "./routes/category.js";
+import productRoutes from "./routes/product.js";
 
 dotenv.config(); /*loads the variables from a .env file 
                     and sets them as environment variables in the current running process */
@@ -23,6 +24,7 @@ app.use(express.json()); // server passes the data via this middleware
 // router middleware
 app.use("/api", authRoutes);
 app.use("/api", categoryRoutes);
+app.use("/api", productRoutes);
 
 const port = process.env.PORT || 8000;
 // "process.env.PORT" in Node.js: port number on which a server should listen for incoming requests
