@@ -9,6 +9,9 @@ import { register, login, secret } from "../controllers/auth.js";
 
 router.post("/register", register);
 router.post("/login", login);
+router.get("/auth-check", requireSignin, (req, res) => {
+  res.json({ ok: true });
+});
 // protect routes from not-logged in users
 router.get("/secret", requireSignin, isAdmin, secret);
 
