@@ -5,7 +5,7 @@ import Home from "./pages/Home";
 import Login from "./pages/auth/Login";
 import Register from "./pages/auth/Register";
 import Dashboard from "./pages/user/Dashboard";
-import Secret from "./pages/user/Secret";
+import Secret from "./pages/Secret";
 import PrivateRoute from "./components/routes/PrivateRoute";
 
 const PageNotFound = () => {
